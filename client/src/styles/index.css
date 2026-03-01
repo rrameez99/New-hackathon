@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ============ THEME VARIABLES ============ */
+:root, [data-theme="dark"] {
+  --bg-primary: #0a0a0f;
+  --bg-card: #12121a;
+  --bg-border: #1e1e28;
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --text-muted: #4b5563;
+  --scrollbar-color: #333;
+}
+
+[data-theme="light"] {
+  --bg-primary: #f5f3f0;
+  --bg-card: #ffffff;
+  --bg-border: #e5e2dd;
+  --text-primary: #1a1a1a;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --scrollbar-color: #ccc;
+}
+
+[data-theme="wisconsin"] {
+  --bg-primary: #f7f3ee;
+  --bg-card: #ffffff;
+  --bg-border: #e0d6ca;
+  --text-primary: #2a2a2a;
+  --text-secondary: #6e6e6e;
+  --text-muted: #9a9a9a;
+  --scrollbar-color: #c5050c;
+}
+
+[data-theme="ocean"] {
+  --bg-primary: #0a1628;
+  --bg-card: #0f2035;
+  --bg-border: #1a3550;
+  --text-primary: #e8f0ff;
+  --text-secondary: #7eb0e0;
+  --text-muted: #3d6b9e;
+  --scrollbar-color: #2a5080;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Override tailwind colors with CSS vars */
+.bg-brand-dark { background-color: var(--bg-primary) !important; }
+.bg-brand-card { background-color: var(--bg-card) !important; }
+.border-brand-border { border-color: var(--bg-border) !important; }
+.text-gray-300 { color: var(--text-primary) !important; }
+.text-gray-400, .text-gray-500 { color: var(--text-secondary) !important; }
+.text-gray-600, .text-gray-700 { color: var(--text-muted) !important; }
+
+/* Light theme special overrides */
+[data-theme="light"] .bg-brand-dark\/90 { background-color: rgba(245, 243, 240, 0.9) !important; }
+[data-theme="light"] .bg-brand-dark\/80 { background-color: rgba(245, 243, 240, 0.8) !important; }
+[data-theme="light"] .bg-black\/70 { background-color: rgba(0, 0, 0, 0.5) !important; }
+[data-theme="light"] .text-white { color: #1a1a1a !important; }
+[data-theme="light"] .font-bold, [data-theme="light"] .font-extrabold { color: #1a1a1a; }
+[data-theme="light"] .bg-gradient-to-t { background: linear-gradient(to top, var(--bg-primary), transparent) !important; }
+[data-theme="light"] input, [data-theme="light"] textarea { color: #1a1a1a !important; }
+[data-theme="light"] input::placeholder, [data-theme="light"] textarea::placeholder { color: #9ca3af !important; }
+
+/* Keep brand colors readable in light mode */
+[data-theme="light"] .text-brand-orange { color: #e05520 !important; }
+[data-theme="light"] .text-brand-green { color: #1a9e3f !important; }
+[data-theme="light"] .text-brand-purple { color: #6040ee !important; }
+[data-theme="light"] .text-brand-red { color: #d03828 !important; }
+[data-theme="light"] .bg-gradient-to-r.from-brand-orange { background: linear-gradient(to right, #e05520, #d03828) !important; }
+
+/* Wisconsin theme - UW-Madison official cardinal & white */
+[data-theme="wisconsin"] .bg-brand-dark\/90 { background-color: rgba(247, 243, 238, 0.9) !important; }
+[data-theme="wisconsin"] .bg-brand-dark\/80 { background-color: rgba(247, 243, 238, 0.8) !important; }
+[data-theme="wisconsin"] .bg-black\/70 { background-color: rgba(0, 0, 0, 0.5) !important; }
+[data-theme="wisconsin"] .text-white { color: #2a2a2a !important; }
+[data-theme="wisconsin"] .font-bold, [data-theme="wisconsin"] .font-extrabold { color: #2a2a2a; }
+[data-theme="wisconsin"] input, [data-theme="wisconsin"] textarea { color: #2a2a2a !important; }
+[data-theme="wisconsin"] input::placeholder, [data-theme="wisconsin"] textarea::placeholder { color: #9a9a9a !important; }
+[data-theme="wisconsin"] .text-brand-orange { color: #c5050c !important; }
+[data-theme="wisconsin"] .from-brand-orange { --tw-gradient-from: #c5050c !important; }
+[data-theme="wisconsin"] .to-brand-red { --tw-gradient-to: #9b0000 !important; }
+[data-theme="wisconsin"] .bg-gradient-to-r.from-brand-orange { background: linear-gradient(to right, #c5050c, #9b0000) !important; }
+[data-theme="wisconsin"] .from-brand-purple { --tw-gradient-from: #c5050c !important; }
+[data-theme="wisconsin"] .to-brand-orange { --tw-gradient-to: #e8533f !important; }
+[data-theme="wisconsin"] .bg-brand-orange\/10 { background-color: rgba(197, 5, 12, 0.1) !important; }
+[data-theme="wisconsin"] .border-brand-orange\/30 { border-color: rgba(197, 5, 12, 0.3) !important; }
+[data-theme="wisconsin"] .border-brand-orange { border-color: #c5050c !important; }
+
+::-webkit-scrollbar { width: 4px; height: 0px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-color); border-radius: 2px; }
+
+.overflow-x-auto { scrollbar-width: none; -ms-overflow-style: none; }
+.overflow-x-auto::-webkit-scrollbar { display: none; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-slide-up { animation: slideUp 0.35s ease forwards; }
+.animate-fade-in { animation: fadeIn 0.3s ease forwards; }
